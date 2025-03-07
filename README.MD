@@ -7,24 +7,6 @@ It provides a **web interface** where users can submit a review, and the system 
 
 ---
 
-## 📂 Folder Structure
-```
-📁 FakeReviewDetection/
-│── 📄 README.md               # Project Documentation
-│── 📄 index.html              # Frontend (User Interface)
-│── 📄 style.css               # CSS Stylesheet
-│── 📄 script.js               # JavaScript (Client-side logic)
-│── 📄 app.py                  # Backend (Flask Server)
-│── 📄 model_training.py        # ML Model Training
-│── 📄 requirements.txt         # Dependencies
-│── 📂 dataset/             
-│   └── 📄 reviews_dataset.csv  # Sample Dataset
-│── 📂 models/
-│   └── 📄 fake_review_model.pkl # Trained ML Model
-```
-
----
-
 ## 📊 Dataset Details (`reviews_dataset.csv`)
 The dataset contains **customer reviews** labeled as **fake (1) or genuine (0)**.
 
