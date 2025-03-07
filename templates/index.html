@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Analysis & Fake Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Review Analysis & Fake Detection</h1>
+        <textarea id="reviewInput" placeholder="Enter your review here..."></textarea>
+        <button onclick="analyzeReview()">Analyze</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function analyzeReview() {
+            let reviewText = document.getElementById("reviewInput").value;
+
+            fetch("/analyze", {
+                method: "POST",
+                body: new URLSearchParams({ "review": reviewText }),
+                headers: { "Content-Type": "application/x-www-form-urlencoded" }
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("result").innerHTML = `
+                    <p><strong>Sentiment:</strong> ${data.sentiment}</p>
+                    <p><strong>Fake Status:</strong> ${data.fake_status}</p>
+                    <p><strong>Fake Probability:</strong> ${data.fake_probability}</p>
+                `;
+            })
+            .catch(error => console.error("Error:", error));
+        }
+    </script>
+</body>
+</html>
